@@ -4,22 +4,14 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import db from '../db.json';
+import Button from '../src/components/Button';
 import Footer from '../src/components/Footer';
 import GithubCorner from '../src/components/GithubCorner';
+import Input from '../src/components/Input';
 import QuizBackground from '../src/components/QuizBackground';
+import QuizContainer from '../src/components/QuizContainer';
 import QuizLogo from '../src/components/QuizLogo';
 import Widget from '../src/components/Widget';
-
-const QuizContainer = styled.div`
-  width: 100%;
-  max-width: 350px;
-  padding-top: 45px;
-  margin: auto 10%;
-  @media screen and (max-width: 500px) {
-    margin: auto;
-    padding: 15px;
-  }
-`;
 
 export default function Home() {
   const router = useRouter();
@@ -36,23 +28,23 @@ export default function Home() {
             <h1>Person of Interest</h1>
           </Widget.Header>
           <Widget.Content>
-            <form onSubmit={function(e) {
+            <form onSubmit={(e) => {
               e.preventDefault();
               router.push(`/quiz?name=${name}`);
-            }}>
-              <input
+            }}
+            >
+              <Input
+                name="userName"
                 placeholder="Digite seu nome para jogar"
-                onChange={function(e) {
-                  setName(e.target.value);
-                }}
+                onChange={(e) => setName(e.target.value)}
+                value={name}
               />
-              <button
+              <Button
                 type="submit"
                 disabled={!name.length}
               >
-                Jogar
-                { name }
-              </button>
+                Jogar!
+              </Button>
             </form>
           </Widget.Content>
         </Widget>
