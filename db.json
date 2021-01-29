@@ -53,7 +53,7 @@
     }
   ],
   "external": [
-    ""
+    "https://alura-poi-quiz.andreaflether.vercel.app/"
   ],
   "theme": {
     "colors": {
